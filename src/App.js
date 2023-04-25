@@ -1,23 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import ReactPaginate from "react-paginate";
+import { Data } from "./components/Data";
+import "./app.css";
 
 function App() {
+  const [users, setUsers] = useState(Data.slice(0, 20));
+  const [pageNumber, setPageNumber] = useState(0);
+  const usersPerPage = 5;
+  const usersVisited = pageNumber * usersPerPage;
+
+  const displayUsers = users
+    .slice(usersVisited, usersVisited + usersPerPage)
+    .map((user) => {
+      return (
+        <div key={user.id} className="user">
+          <h3>{user.fname}</h3>
+          <h3>{user.lname}</h3>
+          <h3>{user.email}</h3>
+        </div>
+      );
+    });
+
+  const pageCount = Math.ceil(users.length / usersPerPage);
+
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>USERS</h1>
+      {displayUsers}
+      <ReactPaginate
+        previousLabel="Previous"
+        nextLabel={"Next"}
+        pageCount={pageCount}
+        onPageChange={changePage}
+        containerClassName="paginationButtons"
+        previousLinkClassName="previousButton"
+        nextLinkClassName="nextButton"
+        activeClassName="paginationActive"
+        disabledClassName="paginatiionDisabled"
+      />
     </div>
   );
 }
