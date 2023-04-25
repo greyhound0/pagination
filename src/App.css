@@ -43,10 +43,10 @@
   background-color: rgb(66, 171, 231);
 }
 
-@media screen and (max-width: 767px) {
+/* @media screen and (max-width: 767px) {
   .user {
     height: 200px;
-    width: 200px;
+    width: 250px;
     display: flex;
     border: 2px solid gray;
     flex-direction: column;
@@ -57,4 +57,4 @@
     border-radius: 5px;
     color: gray;
   }
-}
+} */
