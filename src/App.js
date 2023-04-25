@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ReactPaginate from "react-paginate";
 import { Data } from "./components/Data";
-import "./app.css";
+import "./App.css";
 
 function App() {
   const [users, setUsers] = useState(Data.slice(0, 20));
