@@ -45,8 +45,8 @@
 
 @media screen and (max-width: 480px) {
   .user {
-    height: 100px;
-    width: 100px;
+    height: 200px;
+    width: 00px;
     display: flex;
     border: 2px solid gray;
     flex-direction: column;
